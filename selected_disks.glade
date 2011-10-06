@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkDialog" id="dialog1">
+  <object class="GtkListStore" id="liststore_disks">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name capacity -->
+      <column type="gchararray"/>
+      <!-- column-name free -->
+      <column type="gchararray"/>
+      <!-- column-name id -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">your 320gb hd</col>
+        <col id="1" translatable="yes">320 gb</col>
+        <col id="2" translatable="yes">50 gb</col>
+        <col id="3" translatable="yes">ata-HITACHI_HTS722010K9SA00_080524DP0270DPGJ1S1C</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkDialog" id="selected_disks_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="type_hint">dialog</property>
@@ -15,7 +35,19 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <placeholder/>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-close</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -91,10 +123,32 @@
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkButton" id="button2">
+                <property name="label">gtk-remove</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">&lt;b&gt;5 disks; 540.5 GB capacity; 360.6 free space&lt;/b&gt; (unpartitioned &amp;amp; in filesystems)</property>
+                <property name="use_markup">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
             </child>
           </object>
           <packing>
@@ -105,25 +159,8 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkListStore" id="liststore_disks">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name capacity -->
-      <column type="gchararray"/>
-      <!-- column-name free -->
-      <column type="gchararray"/>
-      <!-- column-name id -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">your 320gb hd</col>
-        <col id="1" translatable="yes">320 gb</col>
-        <col id="2" translatable="yes">50 gb</col>
-        <col id="3" translatable="yes">ata-HITACHI_HTS722010K9SA00_080524DP0270DPGJ1S1C</col>
-      </row>
-    </data>
+    <action-widgets>
+      <action-widget response="0">button1</action-widget>
+    </action-widgets>
   </object>
 </interface>
