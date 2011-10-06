@@ -40,12 +40,45 @@
                   <object class="GtkTreeSelection" id="treeview-selection1"/>
                 </child>
                 <child>
-                  <object class="GtkTreeViewColumn" id="name">
-                    <property name="title" translatable="yes">name</property>
+                  <object class="GtkTreeViewColumn" id="treeviewcol1">
+                    <property name="title" translatable="yes">Name</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                       <attributes>
                         <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcol2">
+                    <property name="title" translatable="yes">Capacity</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcol3">
+                    <property name="title" translatable="yes">Free</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcol4">
+                    <property name="title" translatable="yes">ID</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext4"/>
+                      <attributes>
+                        <attribute name="text">3</attribute>
                       </attributes>
                     </child>
                   </object>
@@ -78,18 +111,18 @@
       <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name capacity -->
-      <column type="gulong"/>
+      <column type="gchararray"/>
       <!-- column-name free -->
-      <column type="gulong"/>
+      <column type="gchararray"/>
       <!-- column-name id -->
       <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0" translatable="yes">320gb sdd</col>
-        <col id="1">320</col>
-        <col id="2">320</col>
-        <col id="3" translatable="yes">ata intel ...</col>
+        <col id="0" translatable="yes">your 320gb hd</col>
+        <col id="1" translatable="yes">320 gb</col>
+        <col id="2" translatable="yes">50 gb</col>
+        <col id="3" translatable="yes">ata-HITACHI_HTS722010K9SA00_080524DP0270DPGJ1S1C</col>
       </row>
     </data>
   </object>
