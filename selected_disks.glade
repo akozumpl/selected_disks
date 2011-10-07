@@ -23,7 +23,7 @@
   </object>
   <object class="GtkDialog" id="selected_disks_dialog">
     <property name="can_focus">False</property>
-    <property name="border_width">5</property>
+    <property name="border_width">6</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
@@ -128,6 +128,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="halign">start</property>
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
