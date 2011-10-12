@@ -1,24 +1,36 @@
 #! /usr/bin/python
 
 import glib
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk
 
 main_loop = None
+
+
+class SelectedDisksDialog(object):
+    def __init__(self):
+        builder = Gtk.Builder()
+        builder.add_from_file("selected_disks.glade")
+        builder.connect_signals(self)
+        self.window = builder.get_object("selected_disks_dialog")
+
+    def cb_close(self, button):
+        self.window.destroy()
+
+    def cb_remove(self, button):
+        print "cb_remove()"
+
+    def show(self):
+        self.window.show_all()
 
 def f_quit(widget):
     main_loop.quit()
 
 def c_button(button):
-    builder = Gtk.Builder()
-    builder.add_from_file("selected_disks.glade")
-    w = builder.get_object("selected_disks_dialog")
-    store = builder.get_object("liststore_disks")
-#    iter = store.insert(0)
-#    store.set(iter, {0 : "yeah"})
-    w.show_all()
+    dialog = SelectedDisksDialog()
+    dialog.show()
 
 def main():
-    button = Gtk.Button("show")
+    button = Gtk.Button.new_with_mnemonic("sh_ow")
     button.connect('clicked', c_button)
     window = Gtk.Window(title="W")
     window.connect('destroy', f_quit)
