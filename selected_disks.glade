@@ -75,7 +75,9 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcol1">
+                    <property name="resizable">True</property>
                     <property name="title" translatable="yes">Name</property>
+                    <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                       <attributes>
@@ -86,7 +88,9 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcol2">
+                    <property name="resizable">True</property>
                     <property name="title" translatable="yes">Capacity</property>
+                    <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
                       <attributes>
@@ -97,7 +101,9 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcol3">
+                    <property name="resizable">True</property>
                     <property name="title" translatable="yes">Free</property>
+                    <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext3"/>
                       <attributes>
@@ -108,7 +114,9 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcol4">
+                    <property name="resizable">True</property>
                     <property name="title" translatable="yes">ID</property>
+                    <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext4"/>
                       <attributes>
