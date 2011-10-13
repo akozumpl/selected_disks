@@ -3,6 +3,8 @@
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkListStore" id="liststore_disks">
     <columns>
+      <!-- column-name object -->
+      <column type="PyObject"/>
       <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name capacity -->
@@ -73,7 +75,7 @@
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                       <attributes>
-                        <attribute name="text">0</attribute>
+                        <attribute name="text">1</attribute>
                       </attributes>
                     </child>
                   </object>
@@ -86,7 +88,7 @@
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
                       <attributes>
-                        <attribute name="text">1</attribute>
+                        <attribute name="text">2</attribute>
                       </attributes>
                     </child>
                   </object>
@@ -99,7 +101,7 @@
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext3"/>
                       <attributes>
-                        <attribute name="text">2</attribute>
+                        <attribute name="text">3</attribute>
                       </attributes>
                     </child>
                   </object>
@@ -112,7 +114,7 @@
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext4"/>
                       <attributes>
-                        <attribute name="text">3</attribute>
+                        <attribute name="text">4</attribute>
                       </attributes>
                     </child>
                   </object>

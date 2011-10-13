@@ -16,12 +16,13 @@ class SelectedDisksDialog(object):
         print "cb_remove()"
 
     def populate(self, devices):
-        for d in reversed(devices):
-            it = self.store.insert(0)
-            self.store.set_value(it, 0, d.model)
-            self.store.set_value(it, 1, "%d GB" % (d.size / 1000))
+        for d in devices:
+            it = self.store.append()
+            self.store.set_value(it, 0, d)
+            self.store.set_value(it, 1, d.model)
             self.store.set_value(it, 2, "%d GB" % (d.size / 1000))
-            self.store.set_value(it, 3, d.serial)
+            self.store.set_value(it, 3, "%d GB" % (d.size / 1000))
+            self.store.set_value(it, 4, d.serial)
 
     def run(self):
         self.window.show_all()
