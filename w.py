@@ -14,7 +14,7 @@ class MockStorageDevice(object):
 def list_of_devices():
     return [
         MockStorageDevice("HITACHI HTS72323", 320e3, "HITACHI_HTS723232A7A364_E3834563J41DPN"),
-        MockStorageDevice("SDD device", 16e3, "31a6bdf5c570c15efcb7fa56c45928cd8977714c"),
+        MockStorageDevice("SDD device", 32e3, "31a6bdf5c570c15efcb7fa56c45928cd8977714c"),
         MockStorageDevice("western digital", 540e3, "67fe5ab0bf5d4be77b27f0ff253810acb50a22be")]
 
 main_loop = None

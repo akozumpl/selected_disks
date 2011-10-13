@@ -72,6 +72,7 @@
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">Name</property>
                     <property name="clickable">True</property>
+                    <property name="sort_column_id">1</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                       <attributes>
@@ -85,6 +86,7 @@
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">Capacity</property>
                     <property name="clickable">True</property>
+                    <property name="sort_column_id">2</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
                       <attributes>
@@ -98,6 +100,7 @@
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">Free</property>
                     <property name="clickable">True</property>
+                    <property name="sort_column_id">3</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext3"/>
                       <attributes>
@@ -111,6 +114,7 @@
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">ID</property>
                     <property name="clickable">True</property>
+                    <property name="sort_column_id">4</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext4"/>
                       <attributes>
