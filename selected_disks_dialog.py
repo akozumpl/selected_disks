@@ -7,6 +7,7 @@ class SelectedDisksDialog(object):
         builder.add_from_file("selected_disks.glade")
         builder.connect_signals(self)
         self.window = builder.get_object("selected_disks_dialog")
+        self.store = builder.get_object("liststore_disks")
 
     def cb_close(self, button):
         self.window.destroy()
@@ -14,6 +15,15 @@ class SelectedDisksDialog(object):
     def cb_remove(self, button):
         print "cb_remove()"
 
-    def show(self):
-        self.window.show_all()
+    def populate(self, devices):
+        for d in reversed(devices):
+            it = self.store.insert(0)
+            self.store.set_value(it, 0, d.model)
+            self.store.set_value(it, 1, "%d GB" % (d.size / 1000))
+            self.store.set_value(it, 2, "%d GB" % (d.size / 1000))
+            self.store.set_value(it, 3, d.serial)
 
+    def run(self):
+        self.window.show_all()
+        self.window.run()
+        self.window.hide()
