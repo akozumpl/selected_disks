@@ -39,4 +39,5 @@ class SelectedDisksDialog(object):
     def run(self):
         self.window.show_all()
         self.window.run()
-        self.window.hide()
+        self.window.destroy()
+        return [r[0] for r in self.store]

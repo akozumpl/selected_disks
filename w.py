@@ -25,7 +25,9 @@ def f_quit(widget):
 def c_button(button):
     dialog = SelectedDisksDialog()
     dialog.populate(list_of_devices())
-    dialog.run()
+    selected = dialog.run()
+    print "Selected devices:"
+    print [d.model for d in selected]
 
 def main():
     button = Gtk.Button.new_with_mnemonic("sh_ow")
