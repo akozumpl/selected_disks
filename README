@@ -1,0 +1,15 @@
+=================================
+Anaconda "Selected Disks" dialog.
+=================================
+
+Mizmo has a screenshot of what this should look like.[1]
+
+With gtk3 properly installed this should just run by executing w.py and clicking
+the 'Show' button.
+
+This is a part of the Anaconda UI overhaul for Fedora 17 [2, 3] and at some point
+will be integrated with the rest of Anaconda.
+
+[1] http://linuxgrrl.com/fedora-ux/Projects/Anaconda/Prototypes/Previews/9-1_install-destination/9-1-4_screen-destination-list.png
+[2] https://fedoraproject.org/wiki/Anaconda/UX_Redesign
+[3] https://fedoraproject.org/wiki/Anaconda/Work_List
