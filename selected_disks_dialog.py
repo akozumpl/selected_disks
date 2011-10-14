@@ -7,6 +7,7 @@ class SelectedDisksDialog(object):
         builder.add_from_file("selected_disks.glade")
         builder.connect_signals(self)
         self.window = builder.get_object("selected_disks_dialog")
+        self.view = builder.get_object("treeview_disks")
         self.store = builder.get_object("liststore_disks")
         self.store.set_sort_func(2, self.cmp_device, "size")
         self.store.set_sort_func(3, self.cmp_device, "size")
@@ -15,7 +16,9 @@ class SelectedDisksDialog(object):
         self.window.destroy()
 
     def cb_remove(self, button):
-        print "cb_remove()"
+        path = self.view.get_cursor()[0]
+        it = self.store.get_iter(path)
+        self.store.remove(it)
 
     def cmp_device(self, model, a_iter, b_iter, attr):
         device1 = self.store.get_value(a_iter, 0)
