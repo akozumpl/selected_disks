@@ -16,8 +16,8 @@ def list_of_devices():
     return [
         MockStorageDevice("HITACHI HTS72323", 320e3, "HITACHI_HTS723232A7A364_E3834563J41DPN", "disk"),
         MockStorageDevice("SDD RAID", 32e3, "31a6bdf5c570c15efcb7fa56c45928cd8977714c", "raid"),
-        MockStorageDevice("IBM multipath", 540042, "67fe5ab0bf5d4be77b27f0ff253810acb50a22be", "dm-multipath"),
-        MockStorageDevice("IBM multipath B", 540042, "7b27f0ff253810acb50a22be67fe5ab0bf5d4be7", "dm-multipath")]
+        MockStorageDevice("IBM multipath", 160042, "67fe5ab0bf5d4be77b27f0ff253810acb50a22be", "dm-multipath"),
+        MockStorageDevice("IBM multipath B", 143042, "7b27f0ff253810acb50a22be67fe5ab0bf5d4be7", "dm-multipath")]
 
 
 main_loop = None

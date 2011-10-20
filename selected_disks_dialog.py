@@ -25,7 +25,7 @@ class SelectedDisksDialog(object):
     def _iter_device_rows(self):
         """ Iterator for those rows of model that represent a real device.
 
-            Categories namely are excluded.
+            Categories, namely, are excluded.
         """
         for category in self.store:
             for it in category.iterchildren():
@@ -42,11 +42,20 @@ class SelectedDisksDialog(object):
         self.update_label()
 
     def cmp_device(self, model, a_iter, b_iter, attr):
-        device1 = self.store.get_value(a_iter, self.COL_OBJECT)
-        device2 = self.store.get_value(b_iter, self.COL_OBJECT)
-        attr1 = getattr(device1, attr)
-        attr2 = getattr(device2, attr)
-        return attr1 - attr2
+        def compute_for_iter(it):
+            device = self.store.get_value(it, self.COL_OBJECT)
+            if device:
+                return getattr(device, attr)
+            # if this is a category, compute the sum of attr over the children
+            acc = 0
+            it_children = self.store.iter_children(it)
+            while it_children:
+                device = self.store.get_value(it_children, self.COL_OBJECT)
+                acc += getattr(device, attr)
+                it_children = self.store.iter_next(it_children)
+            return acc
+
+        return compute_for_iter(a_iter) - compute_for_iter(b_iter)
 
     def populate(self, devices):
         types = {d.type : None for d in devices}
