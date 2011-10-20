@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkListStore" id="liststore_disks">
-    <columns>
-      <!-- column-name object -->
-      <column type="PyObject"/>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name capacity -->
-      <column type="gchararray"/>
-      <!-- column-name free -->
-      <column type="gchararray"/>
-      <!-- column-name id -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <object class="GtkDialog" id="selected_disks_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">6</property>
@@ -63,7 +49,7 @@
                 <property name="height_request">200</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="model">liststore_disks</property>
+                <property name="model">treestore_disks</property>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview-selection1"/>
                 </child>
@@ -171,5 +157,19 @@
     <action-widgets>
       <action-widget response="0">button1</action-widget>
     </action-widgets>
+  </object>
+  <object class="GtkTreeStore" id="treestore_disks">
+    <columns>
+      <!-- column-name object -->
+      <column type="PyObject"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name capacity -->
+      <column type="gchararray"/>
+      <!-- column-name free -->
+      <column type="gchararray"/>
+      <!-- column-name id -->
+      <column type="gchararray"/>
+    </columns>
   </object>
 </interface>

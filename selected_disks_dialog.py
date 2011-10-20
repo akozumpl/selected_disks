@@ -17,10 +17,19 @@ class SelectedDisksDialog(object):
         builder.connect_signals(self)
         self.window = builder.get_object("selected_disks_dialog")
         self.view = builder.get_object("treeview_disks")
-        self.store = builder.get_object("liststore_disks")
+        self.store = builder.get_object("treestore_disks")
         self.label = builder.get_object("label_summary")
         self.store.set_sort_func(self.COL_CAPACITY, self.cmp_device, "size")
         self.store.set_sort_func(self.COL_FREE, self.cmp_device, "size")
+
+    def _iter_device_rows(self):
+        """ Iterator for those rows of model that represent a real device.
+
+            Categories namely are excluded.
+        """
+        for category in self.store:
+            for it in category.iterchildren():
+                yield it
 
     def cb_close(self, button):
         self.window.destroy()
@@ -39,27 +48,33 @@ class SelectedDisksDialog(object):
         return attr1 - attr2
 
     def populate(self, devices):
+        types = {d.type : None for d in devices}
+        for t in types:
+            types[t] = self.store.append(None)
+            self.store.set_value(types[t], self.COL_NAME, t)
         for d in devices:
-            it = self.store.append()
+            it_parent = types[d.type]
+            it = self.store.append(it_parent)
             self.store.set_value(it, self.COL_OBJECT, d)
             self.store.set_value(it, self.COL_NAME, d.model)
             self.store.set_value(it, self.COL_CAPACITY, "%d GB" % (d.size / 1000))
             self.store.set_value(it, self.COL_FREE, "%d GB" % (d.size / 1000))
             self.store.set_value(it, self.COL_ID, d.serial)
         self.update_label()
+        self.view.expand_all()
 
     def run(self):
         self.window.show_all()
         self.window.run()
         self.window.destroy()
-        return [r[self.COL_OBJECT] for r in self.store]
+        return [r[self.COL_OBJECT] for r in self._iter_device_rows()]
 
     def update_label(self):
         vals = {
-            "count" : len(self.store),
+            "count" : len(list(self._iter_device_rows())),
             "capacity" : reduce(lambda acc, row: acc + row[self.COL_OBJECT].size,
-                                self.store, 0) / 1000,
+                                self._iter_device_rows(), 0) / 1000,
             "free" : reduce(lambda acc, row: acc + row[self.COL_OBJECT].size,
-                                self.store, 0) / 1000
+                                self._iter_device_rows(), 0) / 1000
             }
         self.label.set_markup(self.SUMMARY_TEMPLATE % vals)
