@@ -38,6 +38,7 @@ class SelectedDisksDialog(object):
         path = self.view.get_cursor()[0]
         it = self.store.get_iter(path)
         self.store.remove(it)
+        self.update_categories()
         self.update_label()
 
     def cmp_device(self, model, a_iter, b_iter, attr):
@@ -68,6 +69,15 @@ class SelectedDisksDialog(object):
         self.window.run()
         self.window.destroy()
         return [r[self.COL_OBJECT] for r in self._iter_device_rows()]
+
+    def update_categories(self):
+        """ Delete categories with no child. """
+        it = self.store.get_iter_first()
+        while it:
+            if self.store.iter_has_child(it):
+                it = self.store.iter_next(it)
+            else:
+                it = self.store.remove(it) # advances the iterator
 
     def update_label(self):
         vals = {
