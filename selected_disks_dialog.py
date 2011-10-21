@@ -39,8 +39,7 @@ class SelectedDisksDialog(object):
             acc = 0
             it_children = self.store.iter_children(it)
             while it_children:
-                device = self.store.get_value(it_children, self.COL_OBJECT)
-                acc += getattr(device, attr)
+                acc += compute_for_iter(it_children)
                 it_children = self.store.iter_next(it_children)
             return acc
 
