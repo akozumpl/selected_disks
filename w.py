@@ -3,7 +3,7 @@
 import glib
 from gi.repository import Gtk
 
-from selected_disks_dialog import SelectedDisksDialog
+from selected_disks_dialog import SelectedDisksDialog, SelectedDisksTreeDialog
 
 class MockStorageDevice(object):
     def __init__(self, model, size, serial, device_type):
@@ -25,19 +25,23 @@ main_loop = None
 def f_quit(widget):
     main_loop.quit()
 
-def c_button(button):
-    dialog = SelectedDisksDialog()
+def c_button(button, cls):
+    dialog = cls()
     dialog.populate(list_of_devices())
     selected = dialog.run()
     print "Selected devices:"
     print [d.model for d in selected]
 
 def main():
-    button = Gtk.Button.new_with_mnemonic("sh_ow")
-    button.connect('clicked', c_button)
+    button1 = Gtk.Button.new_with_mnemonic("_SelectedDisksDialog")
+    button2 = Gtk.Button.new_with_mnemonic("SelectedDisks_TreeDialog")
+    button1.connect('clicked', c_button, SelectedDisksDialog)
+    button2.connect('clicked', c_button, SelectedDisksTreeDialog)
     window = Gtk.Window(title="W")
     window.connect('destroy', f_quit)
-    window.add(button)
+    box = Gtk.VBox()
+    map(box.add, [button1, button2])
+    window.add(box)
     window.show_all()
     global main_loop
     main_loop= glib.MainLoop()
